@@ -59,6 +59,7 @@ class MyArray: public Container<T> {
             if (size==capacity) {
                 return;
             }
+            data [size] = val;
             /*
              * TODO: implement adding val to data[]
              */
