@@ -1,7 +1,7 @@
 //
 // Created by lengl on 2019/10/1.
 //
-
+#include <iostream>
 #include "test.h"
 /*
  * test MyArray::add()
