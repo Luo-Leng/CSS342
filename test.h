@@ -2,10 +2,12 @@
 // Created by lengl on 2019/10/1.
 //
 
-#ifndef HOMEWORK1_CPP_TEST_H
-#define HOMEWORK1_CPP_TEST_H
+#ifndef test_h
+#define test_h
+#include "test.h"
+using namespace std;
 
-#endif //HOMEWORK1_CPP_TEST_H
+
 template<class T>
 class Container {
     // return the number of elements in the array
@@ -92,3 +94,4 @@ public:
         }
     }
 };
+#endif test_h
