@@ -31,46 +31,64 @@ class Container {
 
 template<class T>
 class MyArray: public Container<T> {
-    private:
-        T * data;
-        int capacity;
-        int size;
+private:
+    T * data;
+    int capacity;
+    int size;
 
-    public:
-        // constructor
-        MyArray(int capacity) : capacity(capacity), size(0) {
-            data = new T[capacity];
+public:
+    // constructor
+    MyArray(int capacity) : capacity(capacity), size(0) {
+        data = new T[capacity];
+    }
+
+    // destructor
+    virtual ~MyArray() {
+        delete []data;
+    }
+
+    int count() const override {
+        return size;
+    }
+
+    T & operator [](int index) {
+        return data[index];
+    }
+
+    void add(T & val) override {
+        if (size==capacity) {
+            return;
         }
+        data[size]=val;
+        /*
+         * TODO: implement adding val to data[]
+         */
+        size++;
+    }
+    //reference:https://blog.csdn.net/fly_wt/article/details/79842364
+    void sort() override {
 
-        // destructor
-        virtual ~MyArray() {
-            delete []data;
-        }
-
-        int count() const override {
-            return size;
-        }
-
-        T & operator [](int index) {
-            return data[index];
-        }
-
-        void add(T & val) override {
-            if (size==capacity) {
-                return;
+        int temp;
+        for(int i=0; i<size; i++){
+            for(int j=1;j<size;j++){
+                if(data[j-1]>data[j]){
+                    temp=data[j-1];
+                    data[j-1]=data[j];
+                    data[j]=temp;
+                }
             }
-            data [size] = val;
-            /*
-             * TODO: implement adding val to data[]
-             */
-            size++;
         }
+    }
 
-        void sort() override {
-            printf("sort(): not implemented\n");
-        }
+    void reverse() override {
+        int temp;
+        int tempForSize = size-1;
+        for(int i=0; i<size/2;i++){                      //idea from HaoRan Wu, he helped me to improve algorithm
+            temp=data[i];
+            data[i]=data[tempForSize];
+            data[tempForSize]=temp;
+            tempForSize--;
 
-        void reverse() override {
-            printf("reverse(): not implemented\n");
         }
+    }
 };
